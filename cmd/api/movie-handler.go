@@ -70,13 +70,13 @@ func (app *application) getAllMoviesByGenre(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	moviesByGenre, err := app.models.DB.All(genreId)
+	movies, err := app.models.DB.All(genreId)
 	if err != nil {
 		app.errorJSON(w, err)
 		return
 	}
 
-	err = app.writeJSON(w, http.StatusOK, moviesByGenre, "moviesByGenre")
+	err = app.writeJSON(w, http.StatusOK, movies, "movies")
 	if err != nil {
 		app.errorJSON(w, err)
 		return
